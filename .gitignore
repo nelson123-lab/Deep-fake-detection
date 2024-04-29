@@ -1,2 +1,5 @@
 test_data/Fake
 test_data/Real
+Model_weights/Meso4_DF.h5
+Model_weights/resnetinceptionv1_epoch_32.pth
+__pycache__

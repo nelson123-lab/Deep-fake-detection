@@ -2,6 +2,11 @@ import os
 from sklearn.metrics import classification_report, roc_curve, auc
 import matplotlib.pyplot as plt
 import random
+from MTCNN_InceptionV1Model import MTCNN_inceptionResnetV1
+from mesonet import Meso4
+
+model = MTCNN_inceptionResnetV1()
+meso_model = Meso4()
 
 test_data = os.listdir('test_data')
 y_test = []
@@ -44,11 +49,14 @@ for folder in test_data:
                 if file.endswith(('.jpg', '.jpeg', '.png', '.gif')):
                     # Construct the full path to the image
                     image_path = os.path.join(root, file)
-                    # Preprocessing on the image
-                    # preprocessed_image = preprocess_image(image_path)
-                    # Making predictions on the preprocessed image
-                    # predictions = predict_image(preprocessed_image)
-                    y_pred = y_pred + [random.randint(0, 1)]
+
+                    # MTCNN_inceptionResnxtV1 model predictions.
+                    # predictions = model.classify_image(image_path)
+
+                    # Mesonet model predictions
+                    predictions = meso_model.predict_on_image(meso_model.model, image_path)
+                
+                    y_pred = y_pred + [predictions]
 
     elif folder == 'Fake_frames':
         # Finding the number of Fake frames.
@@ -63,14 +71,18 @@ for folder in test_data:
                 if file.endswith(('.jpg', '.jpeg', '.png', '.gif')):
                     # Construct the full path to the image
                     image_path = os.path.join(root, file)
-                    # Preprocessing on the image
-                    # preprocessed_image = preprocess_image(image_path)
-                    # Making predictions on the preprocessed image
-                    # predictions = predict_image(preprocessed_image)
-                    y_pred = y_pred + [random.randint(0, 1)]
+
+                    # MTCNN_inceptionResnxtV1 model predictions.
+                    # predictions = model.classify_image(image_path)
+
+                    # Mesonet model predictions
+                    predictions = meso_model.predict_on_image(meso_model.model, image_path)
+                    y_pred = y_pred + [predictions]
     else:
         pass
 
+print(y_test)
+print(y_pred)
 report = classification_report(y_test, y_pred)
 print("Classification Report:")
 print(report)
