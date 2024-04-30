@@ -55,6 +55,7 @@ for folder in test_data:
 
                     # Mesonet model predictions
                     predictions = meso_model.predict_on_image(meso_model.model, image_path)
+
                 
                     y_pred = y_pred + [predictions]
 
@@ -77,12 +78,13 @@ for folder in test_data:
 
                     # Mesonet model predictions
                     predictions = meso_model.predict_on_image(meso_model.model, image_path)
+
                     y_pred = y_pred + [predictions]
     else:
         pass
 
-print(y_test)
-print(y_pred)
+# print(y_test)
+# print(y_pred)
 report = classification_report(y_test, y_pred)
 print("Classification Report:")
 print(report)
