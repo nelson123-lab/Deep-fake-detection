@@ -51,10 +51,10 @@ for folder in test_data:
                     image_path = os.path.join(root, file)
 
                     # MTCNN_inceptionResnxtV1 model predictions.
-                    # predictions = model.classify_image(image_path)
+                    predictions = model.classify_image(image_path)
 
                     # Mesonet model predictions
-                    predictions = meso_model.predict_on_image(meso_model.model, image_path)
+                    # predictions = meso_model.predict_on_image(meso_model.model, image_path)
 
                 
                     y_pred = y_pred + [predictions]
@@ -74,10 +74,10 @@ for folder in test_data:
                     image_path = os.path.join(root, file)
 
                     # MTCNN_inceptionResnxtV1 model predictions.
-                    # predictions = model.classify_image(image_path)
+                    predictions = model.classify_image(image_path)
 
                     # Mesonet model predictions
-                    predictions = meso_model.predict_on_image(meso_model.model, image_path)
+                    # predictions = meso_model.predict_on_image(meso_model.model, image_path)
 
                     y_pred = y_pred + [predictions]
     else:
